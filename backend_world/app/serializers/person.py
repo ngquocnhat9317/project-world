@@ -1,6 +1,8 @@
-from app.models.house_owner import HouseOwner
-from app.models.person import Person
 from rest_framework import serializers
+
+from app.models import HouseOwner
+from app.models import Person
+
 
 class ListPersonSerializer(serializers.ModelSerializer):
     class Meta:
@@ -8,10 +10,10 @@ class ListPersonSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class PersonSerializer(serializers.ModelSerializer):
-    
+
     father = serializers.SerializerMethodField()
     mother = serializers.SerializerMethodField()
-    
+
     def get_father(self, person):
         return get_parent(person.id, 1)
     

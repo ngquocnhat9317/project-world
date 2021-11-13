@@ -1,48 +1,47 @@
-from app import serializers
-from app.serializers.house_owner import HouseOwnerSerializer
-from app.models.person import Person
-from app.models.house_owner import HouseOwner
-from app.serializers.home import HomeSerializer
-from app.models.home import Home
-from rest_framework import viewsets
-from rest_framework.decorators import action
+from rest_framework.views import APIView
 from rest_framework.response import Response
 
-def check_correct_family(husband_id, wife_id):
-    husband = Person.objects.filter(pk=husband_id, gender='XY')
-    wife = Person.objects.filter(pk=wife_id, gender='XX')
-    if husband and wife:
-        return True
-    return False
+from app.serializers.house_owner import HouseOwnerSerializer
+from app.models import Person
+from app.models import Home
 
-class HomeViewSet(viewsets.ModelViewSet):
-    queryset = Home.objects.all()
-    serializer_class = HomeSerializer
-    
-    @action(methods=['post'], detail=False, url_path='make-family', url_name='make-family')
-    def make_family(self, request, *args, **kwargs):
-        req_data = dict(request.data)
-        husband_id = req_data['husband']
-        wife_id = req_data['wife']
-        check = self.check_correct_family(husband_id, wife_id)
+from app.serializers import HomeSerializer
+
+
+class HomeViewSet(APIView):
+
+    def get(self, request, *args, **kwargs):
+        husband_id = request.data['husband']
+        wife_id = request.data['husband']
+        check = self.check_correct_family(request)
         if check:
-            local = Person.objects.filter(pk=husband_id).values('local')
-            
-            serializer = HouseOwnerSerializer(data=rq)
+            local = Person.objects.filter(pk=husband_id).values_list('local')[0]
+            house = Home.objects.create({
+                'local': local
+            })
+            serializer = HouseOwnerSerializer(data={
+                'house': house.id,
+                'husband': husband_id,
+                'wife': wife_id
+            })
+            serializer.is_valid()
+            serializer.save()
         return Response({
             'message': 'success'
         })
-        
+
     def create_house(husband_id):
-        local = Person.objects.filter(pk=husband_id).values('local')
+        local = Person.objects.filter(pk=husband_id).values_list('local').first()
         serializer = HomeSerializer(data={
             'local': local
         })
         serializer.is_valid()
         serializer.save()
-        
-        
-    def check_correct_family(husband_id, wife_id):
+
+    def check_correct_family(request):
+        data = request.data
+        husband_id = data['husband']
+        wife_id = data['wife']
         husband = Person.objects.filter(pk=husband_id, gender='XY')
         wife = Person.objects.filter(pk=wife_id, gender='XX')
         if husband and wife:
