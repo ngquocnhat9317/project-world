@@ -27,7 +27,7 @@ class FirstPersonSerializer(serializers.ModelSerializer):
     class Meta:
         model = Person
         fields = ['id', 'first_name', 'last_name', 'gender']
-        
+
 def get_parent_home(id):
     house = HouseOwner.objects.filter(owner=id, position=3).values('house')
     return house
