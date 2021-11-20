@@ -8,7 +8,7 @@ class Job(models.Model):
         (3, 'Level 3'),
         (4, 'Level 4'),
         (5, 'Level 5'),
-        (6, 'Level 6'),
+        (6, 'Level 6')
     ]
 
     job_name = models.CharField(max_length=50)

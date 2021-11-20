@@ -1,6 +1,7 @@
 from django.db import models
 
-from app.models.job import Job
+from app.models import Job
+from app.models import Map
 
 
 class Person(models.Model):
@@ -24,6 +25,7 @@ class Person(models.Model):
         null=False
     )
     gender = models.CharField(
+        max_length=2,
         choices=GENDER,
         null=False,
         default='XY'
@@ -43,11 +45,11 @@ class Person(models.Model):
         null=False,
         default=1
     )
-    local = models.CharField(
-        max_length=13,
+    local = models.ForeignKey(
+        Map,
         null=False,
         blank=True,
-        default='000001-000001'
+        on_delete=models.CASCADE
     )
     date_of_birth = models.DateTimeField(
         null=False,
