@@ -1,5 +1,7 @@
-from app.models.home import Home
 from rest_framework import serializers
+
+from app.models import Home
+
 
 class HomeSerializer(serializers.ModelSerializer):
     class Meta:

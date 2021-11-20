@@ -1,5 +1,7 @@
-from app.models.job import Job
 from rest_framework import serializers
+
+from app.models import Job
+
 
 class JobSerializer(serializers.ModelSerializer):
     class Meta:

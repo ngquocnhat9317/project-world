@@ -1,21 +1,31 @@
 from django.db import models
-from app.models.person import Person
-from app.models.home import Home
+
+from app.models import Person
+from app.models import Home
+
 
 class HouseOwner(models.Model):
-    
-    POSITION = [
-        (1, 'Husband'),
-        (2, 'Wife'),
-        (3, 'Child')
-    ]
-    owner = models.ForeignKey(Person, on_delete=models.CASCADE)
-    house = models.ForeignKey(Home, on_delete=models.CASCADE)
-    position = models.IntegerField(choices=POSITION, default=3)
-    
+    house = models.ForeignKey(
+        Home,
+        null=True,
+        on_delete=models.PROTECT
+    )
+    husband = models.ForeignKey(
+        Person,
+        null=True,
+        on_delete=models.PROTECT,
+        related_name='husband'
+    )
+    wife = models.ForeignKey(
+        Person,
+        null=True,
+        on_delete=models.PROTECT,
+        related_name='wife'
+    )
+
     class Meta:
         db_table = 'house owner'
         verbose_name = 'House Owner'
         constraints = [
-            models.UniqueConstraint(fields=['owner', 'house'], name='house owner')
+            models.UniqueConstraint(fields=['husband', 'wife'], name='family')
         ]
