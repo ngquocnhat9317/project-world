@@ -1,1 +1,8 @@
-<p>world-map works!</p>
+<table class="world-map" *ngIf="map">
+    <tbody>
+        <tr *ngFor="let row of map">
+            <td class="cell-map" *ngFor="let cell of row">
+            </td>
+        </tr>
+    </tbody>
+</table>

@@ -6,13 +6,15 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { BodyComponent } from './components/body/body.component';
 import { WorldMapComponent } from './components/world-map/world-map.component';
+import { WorldCellComponent } from './components/world-cell/world-cell.component';
 
 @NgModule({
     declarations: [
         AppComponent,
         HeaderComponent,
         BodyComponent,
-        WorldMapComponent
+        WorldMapComponent,
+        WorldCellComponent
     ],
     imports: [
         BrowserModule,

@@ -1,0 +1,18 @@
+table, td {
+    border: 1px solid #bbdbee;
+    border-radius: 5px;
+}
+
+.world-map {
+    background-color: #504f5a;
+}
+
+.cell-map {
+    height: 27px;
+    width: 27px;
+    background-color: #88b04b;
+}
+
+.cell-map p {
+    margin: 0;
+}
