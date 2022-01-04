@@ -7,6 +7,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { BodyComponent } from './components/body/body.component';
 import { WorldMapComponent } from './components/world-map/world-map.component';
 import { WorldCellComponent } from './components/world-cell/world-cell.component';
+import { WorldListComponent } from './components/world-list/world-list.component';
 
 @NgModule({
     declarations: [
@@ -14,7 +15,8 @@ import { WorldCellComponent } from './components/world-cell/world-cell.component
         HeaderComponent,
         BodyComponent,
         WorldMapComponent,
-        WorldCellComponent
+        WorldCellComponent,
+        WorldListComponent
     ],
     imports: [
         BrowserModule,
