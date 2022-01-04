@@ -13,6 +13,8 @@ export class WorldMapComponent implements OnInit {
     @Input() worldId?: string;
     center: string = '0/0';
     map: Cell[][] = [[]];
+    listColumn: number[] = [];
+    listRow: number[] = [];
 
     constructor(
         private mapService: WorldMapService
@@ -30,7 +32,11 @@ export class WorldMapComponent implements OnInit {
 
     getMap(): void {
         this.mapService.getMap(this.center)
-            .subscribe(map => this.map = map);
+            .subscribe(map => {
+                this.map = map.map;
+                this.listColumn = map.columns;
+                this.listRow = map.rows;
+            });
     }
 
 }
