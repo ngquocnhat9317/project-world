@@ -1,12 +1,12 @@
 <div class="main-content">
     <div class="left-side"></div>
     <div class="middle-side">
-        <div>
-            <button class="btn btn-create">Create the World</button>
+        <div *ngIf="worldId == undefined">
+            <button class="btn btn-create" (click)="createWorld()">Create the World</button>
             <span class="span">Or</span>
             <button class="btn btn-view">View the World</button>
         </div>
-        <app-world-map></app-world-map>
+        <world-map [worldId]="worldId" (selectCell)="onSelect($event)"></world-map>
     </div>
     <div class="right-side"></div>
 </div>

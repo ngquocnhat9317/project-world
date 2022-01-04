@@ -1,8 +1,10 @@
-<table class="world-map" *ngIf="map">
-    <tbody>
-        <tr *ngFor="let row of map">
-            <td class="cell-map" *ngFor="let cell of row">
-            </td>
-        </tr>
-    </tbody>
-</table>
+<div *ngIf="worldId">
+    <table class="world-map">
+        <tbody>
+            <tr *ngFor="let row of map">
+                <td class="cell-map" *ngFor="let cell of row" (click)="select(cell.local)">
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
