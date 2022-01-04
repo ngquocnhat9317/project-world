@@ -6,9 +6,9 @@ const getDumpMap = (center: string): Cell[][] => {
     let rows = []
     const column = parseInt(center.split('/')[0]);
     const row = parseInt(center.split('/')[1]);
-    for (let y = (row - 5); y <= (row + 5); y++) {
+    for (let y = (row - 4); y <= (row + 4); y++) {
         let cells = [];
-        for (let x = (column - 5); x <= (column + 5); x++) {
+        for (let x = (column - 4); x <= (column + 4); x++) {
             cells.push({
                 'local': `${x}/${y}`,
                 'status': '1'

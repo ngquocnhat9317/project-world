@@ -1,12 +1,17 @@
 <div class="main-content">
     <div class="left-side"></div>
     <div class="middle-side">
-        <div *ngIf="worldId == undefined">
-            <button class="btn btn-create" (click)="createWorld()">Create the World</button>
-            <span class="span">Or</span>
-            <button class="btn btn-view">View the World</button>
+        <div class="btn-group" *ngIf="worldId == undefined">
+            <div class="btn btn-create" (click)="createWorld()">
+                <p>Create the World</p>
+                <p>Create a new world and watch it grow</p>
+            </div>
+            <div class="btn btn-view">
+                <p>View the World</p>
+                <p>Choose a world that already exists</p>
+            </div>
         </div>
-        <world-map [worldId]="worldId" (selectCell)="onSelect($event)"></world-map>
+        <world-map class="world-map-content" [worldId]="worldId" (selectCell)="onSelect($event)"></world-map>
     </div>
     <div class="right-side"></div>
 </div>
