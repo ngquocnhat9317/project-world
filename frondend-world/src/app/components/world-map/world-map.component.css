@@ -1,16 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap');
+
 table, td {
-    border: 1px solid #bbdbee;
-    border-radius: 5px;
+    border-collapse: collapse;
 }
 
 .world-map {
-    background-color: #504f5a;
 }
 
 .cell-map {
-    height: 27px;
-    width: 27px;
+    height: 40px;
+    width: 40px;
     background-color: #88b04b;
+    border: 1px solid #bbdbee;
+}
+
+.cell-row {
+    width: 20px;
+}
+
+.cell-column {
+    height: 20px;
+}
+
+.cell-column, .cell-row {
+    text-align: center;
+    font-family: 'Roboto Slab', serif;
+    font-size: 12px;
+    font-weight: 500;
 }
 
 .cell-map p {

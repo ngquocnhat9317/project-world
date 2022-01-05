@@ -21,7 +21,8 @@ const getDumpMap = (center: string): MapData => {
                 'local': `${x}/${y}`,
                 'status': '1'
             })
-            listColumn.push(x)
+            if (listColumn.length < 9)
+                listColumn.push(x)
         }
         rows.push(cells);
         listRow.push(y)

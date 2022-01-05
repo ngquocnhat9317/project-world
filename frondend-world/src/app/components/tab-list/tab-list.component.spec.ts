@@ -1,19 +1,19 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { WorldCellComponent } from './world-cell.component';
+import { TabListComponent } from './tab-list.component';
 
-describe('WorldCellComponent', () => {
-    let component: WorldCellComponent;
-    let fixture: ComponentFixture<WorldCellComponent>;
+describe('TabListComponent', () => {
+    let component: TabListComponent;
+    let fixture: ComponentFixture<TabListComponent>;
 
     beforeEach(async () => {
         await TestBed.configureTestingModule({
-            declarations: [WorldCellComponent],
+            declarations: [TabListComponent],
         }).compileComponents();
     });
 
     beforeEach(() => {
-        fixture = TestBed.createComponent(WorldCellComponent);
+        fixture = TestBed.createComponent(TabListComponent);
         component = fixture.componentInstance;
         fixture.detectChanges();
     });

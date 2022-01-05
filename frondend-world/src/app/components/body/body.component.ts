@@ -4,13 +4,17 @@ import { WorldMapService } from 'src/app/services/world-map.service';
 @Component({
     selector: 'app-body',
     templateUrl: './body.component.html',
-    styleUrls: ['./body.component.css']
+    styleUrls: ['./body.component.css'],
+    host: {
+        '(window:resize)': 'onResize($event)'
+    }
 })
 export class BodyComponent implements OnInit {
 
-    worldId: string | undefined = undefined
-
-    cellLocal?: string
+    worldId: string | undefined = undefined;
+    cellLocal?: string;
+    leftSideItems: string[] = ['Terrain', 'Resource']
+    rightSideItems: string[] = ['People', 'Person']
 
     constructor(private worldService: WorldMapService) { }
 
@@ -24,6 +28,16 @@ export class BodyComponent implements OnInit {
 
     onSelect(local: string) {
         this.cellLocal = local
-        console.log(this.cellLocal)
+    }
+
+    onResize(event: any){
+        let innerWidth = event.target.innerWidth
+        if (innerWidth < 900) {
+            this.leftSideItems = this.rightSideItems.concat(this.leftSideItems)
+            this.rightSideItems = []
+        } else {
+            this.leftSideItems = ['Terrain', 'Resource']
+            this.rightSideItems = ['People', 'Person']
+        }
     }
 }

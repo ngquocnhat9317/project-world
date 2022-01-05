@@ -8,6 +8,7 @@ import { BodyComponent } from './components/body/body.component';
 import { WorldMapComponent } from './components/world-map/world-map.component';
 import { WorldCellComponent } from './components/world-cell/world-cell.component';
 import { WorldListComponent } from './components/world-list/world-list.component';
+import { TabListComponent } from './components/tab-list/tab-list.component';
 
 @NgModule({
     declarations: [
@@ -16,7 +17,8 @@ import { WorldListComponent } from './components/world-list/world-list.component
         BodyComponent,
         WorldMapComponent,
         WorldCellComponent,
-        WorldListComponent
+        WorldListComponent,
+        TabListComponent
     ],
     imports: [
         BrowserModule,
