@@ -1,5 +1,6 @@
-<div *ngIf="items">
-    <div *ngFor="let item of items">
+<div class="tab-group" *ngIf="items">
+    <span class="tab" *ngFor="let item of items" (click)="onSelect(item)">
         {{item}}
-    </div>
+    </span>
 </div>
+<p>{{selected}}</p>
