@@ -18,3 +18,9 @@
     cursor: pointer;
 }
 
+th, td {
+    font-size: 13px;
+}
+
+.tbl-infor {}
+
