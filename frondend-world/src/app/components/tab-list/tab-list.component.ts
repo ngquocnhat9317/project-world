@@ -54,31 +54,30 @@ export class TabListComponent implements OnInit, OnChanges {
     }
 
     getInfo(): void {
-        if (this.local != undefined) {
-            if (this.selected === 'People') {
-                this.getPeopleInfo()
-            }
-            if (this.selected === 'Person') {
-                this.getPersonInfo()
-            }
-            if (this.selected === 'Terrain') {
-                this.getTerrainInfo()
-            }
-            if (this.selected === 'Resource') {
-                this.getResourceInfo()
-            }
+        if (this.selected === 'People') {
+            this.getPeopleInfo()
+        }
+        if (this.selected === 'Person') {
+            this.getPersonInfo()
+        }
+        if (this.selected === 'Terrain') {
+            this.getTerrainInfo()
+        }
+        if (this.selected === 'Resource') {
+            this.getResourceInfo()
         }
     }
 
     getPeopleInfo(): void {
-        this.cellService.getPeopleInfo(this.local)
-            .subscribe(info => {
-                this.peopleInfo = info
-            })
+        if (this.local !== undefined)
+            this.cellService.getPeopleInfo(this.local)
+                .subscribe(info => {
+                    this.peopleInfo = info
+                })
     }
 
     getPersonInfo(): void {
-        if (this.personId !== undefined)
+        if (this.personId !== undefined && this.local !== undefined)
             this.cellService.getPersonInfo(this.local, this.personId)
                 .subscribe(info => {
                     this.personInfo = info
@@ -86,16 +85,18 @@ export class TabListComponent implements OnInit, OnChanges {
     }
 
     getTerrainInfo(): void {
-        this.cellService.getTerrainInfo(this.local)
-            .subscribe(info => {
-                this.terrainInfo = info
-            })
+        if (this.local !== undefined)
+            this.cellService.getTerrainInfo(this.local)
+                .subscribe(info => {
+                    this.terrainInfo = info
+                })
     }
 
     getResourceInfo(): void {
-        this.cellService.getResourceInfo(this.local)
-            .subscribe(info => {
-                this.resourceInfo = info
-            })
+        if (this.local !== undefined)
+            this.cellService.getResourceInfo(this.local)
+                .subscribe(info => {
+                    this.resourceInfo = info
+                })
     }
 }

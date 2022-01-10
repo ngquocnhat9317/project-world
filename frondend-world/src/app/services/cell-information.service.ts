@@ -51,26 +51,23 @@ const getDumpPeopleInfo = (): People => {
     return result;
 };
 
-const getDumpPersonInfo = (id: number | undefined): Person | undefined => {
-    let result = undefined;
-    if (id) {
-        result = {
-            'id': id,
-            'name': 'Victor',
-            'gender': 'male',
-            'age': 20,
-            'status': 'Hungry',
-            'happy': 100,
-            'relationship': [
-                {
-                    'id': id + 1,
-                    'name': 'Rose',
-                    'gender': 'female',
-                    'age': 18,
-                    'position': 'wife'
-                }
-            ]
-        }
+const getDumpPersonInfo = (id: number): Person => {
+    let result = {
+        'id': id,
+        'name': 'Victor',
+        'gender': 'male',
+        'age': 20,
+        'status': 'Hungry',
+        'happy': 100,
+        'relationship': [
+            {
+                'id': id + 1,
+                'name': 'Rose',
+                'gender': 'female',
+                'age': 18,
+                'position': 'wife'
+            }
+        ]
     }
     return result;
 }
@@ -101,22 +98,22 @@ export class CellInformationService {
 
     constructor() {}
 
-    getPeopleInfo(local: string | undefined): Observable<People> {
+    getPeopleInfo(local: string): Observable<People> {
         let peopleInfo = of(getDumpPeopleInfo());
         return peopleInfo;
     }
 
-    getPersonInfo(local: string | undefined, id: number | undefined): Observable<Person | undefined> {
+    getPersonInfo(local: string, id: number): Observable<Person> {
         let personInfo = of(getDumpPersonInfo(id));
         return personInfo;
     }
 
-    getTerrainInfo(local: string | undefined): Observable<Terrain> {
+    getTerrainInfo(local: string): Observable<Terrain> {
         let terrainInfo = of(getDumpTerrainInfo());
         return terrainInfo;
     }
 
-    getResourceInfo(local: string | undefined): Observable<Resource> {
+    getResourceInfo(local: string): Observable<Resource> {
         let resourceInfo = of(getDumpResourceInfo());
         return resourceInfo;
     }
