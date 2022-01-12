@@ -44,6 +44,48 @@ const getDumpPeopleInfo = (): People => {
                 'gender': 'male',
                 'age': 19,
             },
+            {
+                'id': 7,
+                'name': 'John',
+                'gender': 'male',
+                'age': 19,
+            },
+            {
+                'id': 8,
+                'name': 'John',
+                'gender': 'male',
+                'age': 19,
+            },
+            {
+                'id': 9,
+                'name': 'John',
+                'gender': 'male',
+                'age': 19,
+            },
+            {
+                'id': 10,
+                'name': 'John',
+                'gender': 'male',
+                'age': 19,
+            },
+            {
+                'id': 11,
+                'name': 'John',
+                'gender': 'male',
+                'age': 19,
+            },
+            {
+                'id': 12,
+                'name': 'John',
+                'gender': 'male',
+                'age': 19,
+            },
+            {
+                'id': 13,
+                'name': 'John',
+                'gender': 'male',
+                'age': 20,
+            }
         ],
         'level': 1,
         'happy': 100

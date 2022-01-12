@@ -1,26 +1,126 @@
-.tab-group {
-    display: flex;
+.side-info {
+    position: relative;
+    width: 100%;
+    height: 100%;
 }
 
 .tab {
-    width: 70px;
-    height: 25px;
+    position: absolute;
+    top: 0;
+    z-index: 1;
+    width: 80px;
+    height: 30px;
     box-sizing: border-box;
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 12px;
     font-family: 'Roboto', sans-serif;
-    border-top: 1px solid #333;
-    border-left: 1px solid #333;
-    border-right: 1px solid #333;
-    border-radius: 7px 7px 0 0;
+    border-radius: 5px 5px 0 0;
     cursor: pointer;
+}
+
+table, th, td {
+    border: 1px solid #fff;
+}
+
+table {
+    width: 100%;
+}
+
+tr:nth-child(odd) {
+    background-color: #c8ecdb;
+}
+
+tr:nth-child(even) {
+    background-color: #d1c5be;
+}
+
+th {
+    width: 33%;
+    min-width: 95px;
+    text-align: left;
+    font-weight: 600;
 }
 
 th, td {
     font-size: 13px;
+    box-sizing: border-box;
+    font-family: 'Roboto Slab', serif;
+    padding: 3px;
+}
+
+.info-content {
+    position: absolute;
+    top: 25px;
+    z-index: 2;
+    width: 100%;
+    height: calc(100% - 25px);
+    padding: 10px;
+    box-sizing: border-box;
+    border-radius: 10px 10px 0 0;
+    background-color: #dffcf5;
 }
 
 .tbl-infor {}
 
+.icon-person {
+    display: inline-block;
+    vertical-align: middle;
+    width: 20px;
+    height: 20px;
+    margin: 0;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.icon-person-male {
+    background-image: url('src/image/icon1.svg');
+}
+
+.icon-person-female {
+    background-image: url('src/image/icon2.svg');
+}
+
+.tooltip {
+    position: relative;
+}
+.tooltip:after {
+    text-transform: none;
+    content: attr(data-tooltip);
+    font-size: 13px;
+    position: absolute;
+    color: #fff;
+    background: #282828;
+    padding: 3px 5px;
+    width: -webkit-max-content;
+    width: -moz-max-content;
+    width: max-content;
+    max-width: 150px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    left: 50%;
+    top: 0;
+    border-radius: 4px;
+    transform: translate3d(-40%, 0%, 0);
+    transition: all 0.4s ease;
+    transition-delay: 0.1s;
+}
+
+.tooltip:hover {
+    background-color: rgba(0, 0, 0, 0.12);
+}
+
+.tooltip:hover:before, .tooltip:hover:after {
+    opacity: 1;
+}
+/* .tooltip:hover:before {
+    transform: translate3d(-50%, calc(-100% - 18px), 0);
+} */
+.tooltip:hover:after {
+    transform: translate3d(-50%, calc(-50% - 16px), 0);
+}

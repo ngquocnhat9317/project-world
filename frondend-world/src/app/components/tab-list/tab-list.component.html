@@ -1,112 +1,125 @@
-<div class="tab-group" *ngIf="items">
-    <span class="tab" *ngFor="let item of items" (click)="onSelectTab(item)">
+<div class="side-info" *ngIf="items">
+    <span
+        class="tab"
+        *ngFor="let item of items; index as i; first as isFirst"
+        (click)="onSelectTab(item)"
+        [style.left.px]="70*i"
+        [ngStyle]="getIndexSelectedTab(item)"
+        >
         {{item}}
     </span>
+    <div class="info-content" [style]="borderRadius">
+        <div *ngIf="selected === 'People'">
+            <table class="tbl-info">
+                <tr>
+                    <th>People</th>
+                    <td *ngIf="peopleInfo">
+                        <span
+                            class="icon-person tooltip"
+                            *ngFor="let person of peopleInfo.peopleList"
+                            (click)="onSelectPerson(person.id)"
+                            [ngClass]="getIcon(person.gender)"
+                            [attr.data-tooltip]="'Name: ' + person.name + ', Age: ' + person.age">
+                        </span>
+                    </td>
+                    <td *ngIf="!peopleInfo">N/A</td>
+                </tr>
+                <tr>
+                    <th>Level</th>
+                    <td *ngIf="peopleInfo">{{peopleInfo.level}}</td>
+                    <td *ngIf="!peopleInfo">N/A</td>
+                </tr>
+                <tr>
+                    <th>Happy</th>
+                    <td *ngIf="peopleInfo">{{peopleInfo.happy}}</td>
+                    <td *ngIf="!peopleInfo">N/A</td>
+                </tr>
+            </table>
+        </div>
+        <div *ngIf="selected === 'Person'">
+            <table class="tbl-info">
+                <tr>
+                    <th>Id</th>
+                    <td *ngIf="personInfo">{{personInfo.id}}</td>
+                    <td *ngIf="!personInfo">N/A</td>
+                </tr>
+                <tr>
+                    <th>Name</th>
+                    <td *ngIf="personInfo">{{personInfo.name}}</td>
+                    <td *ngIf="!personInfo">N/A</td>
+                </tr>
+                <tr>
+                    <th>Gender</th>
+                    <td *ngIf="personInfo">{{personInfo.gender}}</td>
+                    <td *ngIf="!personInfo">N/A</td>
+                </tr>
+                <tr>
+                    <th>Age</th>
+                    <td *ngIf="personInfo">{{personInfo.age}}</td>
+                    <td *ngIf="!personInfo">N/A</td>
+                </tr>
+                <tr>
+                    <th>Status</th>
+                    <td *ngIf="personInfo">{{personInfo.status}}</td>
+                    <td *ngIf="!personInfo">N/A</td>
+                </tr>
+                <tr>
+                    <th>Happy</th>
+                    <td *ngIf="personInfo">{{personInfo.happy}}</td>
+                    <td *ngIf="!personInfo">N/A</td>
+                </tr>
+                <tr>
+                    <th>Relationship</th>
+                    <td *ngIf="personInfo">
+                        <span *ngFor="let person of personInfo.relationship">{{person.id}} {{person.name}} {{person.position}}</span>
+                    </td>
+                    <td *ngIf="!personInfo">N/A</td>
+                </tr>
+            </table>
+        </div>
+        <div *ngIf="selected === 'Terrain'">
+            <table class="tbl-info">
+                <tr>
+                    <th>Terrain</th>
+                    <td *ngIf="terrainInfo">{{terrainInfo.terrain}}</td>
+                    <td *ngIf="!terrainInfo">N/A</td>
+                </tr>
+                <tr>
+                    <th>Extreme level</th>
+                    <td *ngIf="terrainInfo">{{terrainInfo.extremeLevel}}</td>
+                    <td *ngIf="!terrainInfo">N/A</td>
+                </tr>
+            </table>
+        </div>
+        <div *ngIf="selected === 'Resource'">
+            <table class="tbl-info">
+                <tr>
+                    <th>Food</th>
+                    <td *ngIf="resourceInfo">{{resourceInfo.food}}</td>
+                    <td *ngIf="!resourceInfo">N/A</td>
+                </tr>
+                <tr>
+                    <th>Water</th>
+                    <td *ngIf="resourceInfo">{{resourceInfo.water}}</td>
+                    <td *ngIf="!resourceInfo">N/A</td>
+                </tr>
+                <tr>
+                    <th>Lumber</th>
+                    <td *ngIf="resourceInfo">{{resourceInfo.lumber}}</td>
+                    <td *ngIf="!resourceInfo">N/A</td>
+                </tr>
+                <tr>
+                    <th>Rock</th>
+                    <td *ngIf="resourceInfo">{{resourceInfo.rock}}</td>
+                    <td *ngIf="!resourceInfo">N/A</td>
+                </tr>
+                <tr>
+                    <th>Metal</th>
+                    <td *ngIf="resourceInfo">{{resourceInfo.metal}}</td>
+                    <td *ngIf="!resourceInfo">N/A</td>
+                </tr>
+            </table>
+        </div>
+    </div>
 </div>
-<div class="info-content">
-    <div *ngIf="selected === 'People'">
-        <table class="tbl-info">
-            <tr>
-                <th>People</th>
-                <td *ngIf="peopleInfo">
-                    <span *ngFor="let person of peopleInfo.peopleList" (click)="onSelectPerson(person.id)">{{person.id}} {{person.name}}</span>
-                </td>
-                <td *ngIf="!peopleInfo">N/A</td>
-            </tr>
-            <tr>
-                <th>Level</th>
-                <td *ngIf="peopleInfo">{{peopleInfo.level}}</td>
-                <td *ngIf="!peopleInfo">N/A</td>
-            </tr>
-            <tr>
-                <th>Happy</th>
-                <td *ngIf="peopleInfo">{{peopleInfo.happy}}</td>
-                <td *ngIf="!peopleInfo">N/A</td>
-            </tr>
-        </table>
-    </div>
-    <div *ngIf="selected === 'Person'">
-        <table class="tbl-info">
-            <tr>
-                <th>Id</th>
-                <td *ngIf="personInfo">{{personInfo.id}}</td>
-                <td *ngIf="!personInfo">N/A</td>
-            </tr>
-            <tr>
-                <th>Name</th>
-                <td *ngIf="personInfo">{{personInfo.name}}</td>
-                <td *ngIf="!personInfo">N/A</td>
-            </tr>
-            <tr>
-                <th>Gender</th>
-                <td *ngIf="personInfo">{{personInfo.gender}}</td>
-                <td *ngIf="!personInfo">N/A</td>
-            </tr>
-            <tr>
-                <th>Age</th>
-                <td *ngIf="personInfo">{{personInfo.age}}</td>
-                <td *ngIf="!personInfo">N/A</td>
-            </tr>
-            <tr>
-                <th>Status</th>
-                <td *ngIf="personInfo">{{personInfo.status}}</td>
-                <td *ngIf="!personInfo">N/A</td>
-            </tr>
-            <tr>
-                <th>Happy</th>
-                <td *ngIf="personInfo">{{personInfo.happy}}</td>
-                <td *ngIf="!personInfo">N/A</td>
-            </tr>
-            <tr>
-                <th>Relationship</th>
-                <td *ngIf="personInfo">
-                    <span *ngFor="let person of personInfo.relationship">{{person.id}} {{person.name}} {{person.position}}</span>
-                </td>
-                <td *ngIf="!personInfo">N/A</td>
-            </tr>
-        </table>
-    </div>
-    <div *ngIf="selected === 'Terrain'">
-        <table class="tbl-info">
-            <tr>
-                <th>Terrain</th>
-                <td *ngIf="terrainInfo">{{terrainInfo.terrain}}</td>
-                <td *ngIf="!terrainInfo">N/A</td>
-            </tr>
-            <tr>
-                <th>Extreme level</th>
-                <td *ngIf="terrainInfo">{{terrainInfo.extremeLevel}}</td>
-                <td *ngIf="!terrainInfo">N/A</td>
-            </tr>
-        </table>
-    </div>
-    <div *ngIf="selected === 'Resource'">
-        <table class="tbl-info">
-            <tr>
-                <th>Food</th>
-                <td *ngIf="resourceInfo">{{resourceInfo.food}}</td>
-                <td *ngIf="!resourceInfo">N/A</td>
-            </tr>
-            <tr>
-                <th>Water</th>
-                <td *ngIf="resourceInfo">{{resourceInfo.water}}</td>
-                <td *ngIf="!resourceInfo">N/A</td>
-            </tr>
-            <tr>
-                <th>Lumber</th>
-                <td *ngIf="resourceInfo">{{resourceInfo.lumber}}</td>
-                <td *ngIf="!resourceInfo">N/A</td>
-            </tr>
-            <tr>
-                <th>Rock</th>
-                <td *ngIf="resourceInfo">{{resourceInfo.rock}}</td>
-                <td *ngIf="!resourceInfo">N/A</td>
-            </tr>
-            <tr>
-                <th>Metal</th>
-                <td *ngIf="resourceInfo">{{resourceInfo.metal}}</td>
-                <td *ngIf="!resourceInfo">N/A</td>
-            </tr>
-        </table>
-    </div>
-</div>
+
