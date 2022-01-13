@@ -4,11 +4,10 @@
         *ngFor="let item of items; index as i; first as isFirst"
         (click)="onSelectTab(item)"
         [style.left.px]="70*i"
-        [ngStyle]="getIndexSelectedTab(item)"
-        >
+        [ngStyle]="getIndexSelectedTab(item)">
         {{item}}
     </span>
-    <div class="info-content" [style]="borderRadius">
+    <div class="info-content">
         <div *ngIf="selected === 'People'">
             <table class="tbl-info">
                 <tr>
@@ -18,6 +17,7 @@
                             class="icon-person tooltip"
                             *ngFor="let person of peopleInfo.peopleList"
                             (click)="onSelectPerson(person.id)"
+                            (mouseover)="getElement($event)"
                             [ngClass]="getIcon(person.gender)"
                             [attr.data-tooltip]="'Name: ' + person.name + ', Age: ' + person.age">
                         </span>

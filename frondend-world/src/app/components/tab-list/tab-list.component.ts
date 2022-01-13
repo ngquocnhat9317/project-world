@@ -22,8 +22,6 @@ export class TabListComponent implements OnInit, OnChanges {
     terrainInfo?: Terrain;
     resourceInfo?: Resource;
 
-    borderRadius: string = 'border-radius: 7px 7px 0 0';
-
     constructor(private cellService: CellInformationService) {}
 
     ngOnInit(): void {
@@ -44,6 +42,10 @@ export class TabListComponent implements OnInit, OnChanges {
         } else {
             return {'z-index': 1, 'background-color': '#f3d9da'}
         }
+    }
+
+    getElement(event: any): void {
+        console.log(event.target)
     }
 
     getIcon(gender: string): string {
