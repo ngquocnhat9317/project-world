@@ -26,8 +26,8 @@ jobs:
         cd backend_world
         python -m pip install --upgrade pip
         pip install pipenv
-        python -m venv env
-        .\env\Scripts\activate.bat
+        python -m venv env-world
+        .\env-world\Scripts\activate.bat
         pipenv install
     - name: Run Tests
       run: |
