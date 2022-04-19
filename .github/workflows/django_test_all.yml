@@ -27,7 +27,7 @@ jobs:
         python -m pip install --upgrade pip
         pip install pipenv
         python -m venv env-world
-        .\env-world\Scripts\activate.bat
+        source ./env-world/Scripts/activate.bat
         pipenv install
     - name: Run Tests
       run: |
