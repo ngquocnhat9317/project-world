@@ -1,0 +1,31 @@
+<div class="main-content">
+    <tab-list
+        class="left-side"
+        [items]="leftSideItems"
+        [local]="cellLocal">
+    </tab-list>
+    <div class="middle-side">
+        <div class="btn-group" *ngIf="worldId == undefined">
+            <div class="btn btn-create" (click)="createWorld()">
+                <p class="btn-name">Create the World</p>
+                <p class="btn-description">Create a new world and watch it grow</p>
+            </div>
+            <div class="btn btn-view">
+                <p class="btn-name">View the World</p>
+                <p class="btn-description">Choose a world that already exists</p>
+            </div>
+        </div>
+        <world-map
+            class="world-map-content"
+            *ngIf="worldId"
+            [worldId]="worldId"
+            (selectCell)="onSelect($event)">
+        </world-map>
+    </div>
+    <tab-list
+        class="right-side"
+        [items]="rightSideItems"
+        [local]="cellLocal"
+        *ngIf="rightSideItems.length > 0">
+    </tab-list>
+</div>

@@ -1,0 +1,28 @@
+.world-map {
+}
+
+.cell-map {
+    height: 40px;
+    width: 40px;
+    background-color: #88b04b;
+    border: 1px solid #bbdbee;
+}
+
+.cell-row {
+    width: 20px;
+}
+
+.cell-column {
+    height: 20px;
+}
+
+.cell-column, .cell-row {
+    text-align: center;
+    font-family: 'Roboto Slab', serif;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.cell-map p {
+    margin: 0;
+}
