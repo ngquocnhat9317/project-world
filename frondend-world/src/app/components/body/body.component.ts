@@ -19,7 +19,7 @@ export class BodyComponent implements OnInit {
     constructor(private worldService: WorldMapService) { }
 
     ngOnInit(): void {
-        this.changeSideitem(window.innerWidth);
+        this.changeSideItem(window.innerWidth);
     }
 
     createWorld(): void {
@@ -31,7 +31,7 @@ export class BodyComponent implements OnInit {
         this.cellLocal = local;
     }
 
-    changeSideitem(width: number): void {
+    changeSideItem(width: number): void {
         if (width < 900 && this.leftSideItems.length == 2) {
             this.leftSideItems = this.rightSideItems.concat(this.leftSideItems);
             this.rightSideItems = [];
@@ -44,6 +44,6 @@ export class BodyComponent implements OnInit {
 
     onResize(event: any): void {
         let innerWidth = event.target.innerWidth;
-        this.changeSideitem(innerWidth);
+        this.changeSideItem(innerWidth);
     }
 }
