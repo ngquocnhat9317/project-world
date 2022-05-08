@@ -1,0 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap');
+
+body {
+    overflow-x: hidden;
+    margin: 0;
+    height: 100vh;
+}
+
+table, td {
+    border-collapse: collapse;
+}

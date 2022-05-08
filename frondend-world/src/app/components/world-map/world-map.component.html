@@ -1,0 +1,15 @@
+<div *ngIf="worldId">
+    <table class="world-map">
+        <tbody>
+            <tr>
+                <td></td>
+                <td class="cell-column" *ngFor="let column of listColumn">{{column}}</td>
+            </tr>
+            <tr *ngFor="let row of map; index as i">
+                <td class="cell-row">{{listRow[i]}}</td>
+                <td class="cell-map" *ngFor="let cell of row" (click)="select(cell.local)">
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,12 @@
+.content-app {
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.content-app > app-body {
+    height: calc(100% - 75px);
+}
