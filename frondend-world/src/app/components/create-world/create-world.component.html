@@ -1,1 +1,16 @@
-<div></div>
+<div>
+    <table>
+        <tbody>
+            <tr *ngFor="let row of map">
+                <td class="cell-map" *ngFor="let cell of row">
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <select (change)="selectBrush($event.target.value)">
+        <option *ngFor="let brush of listBrush" value="brush">Diameter {{brush*2 - 1}}</option>
+    </select>
+    <select name="" id="">
+        <option *ngFor="let terrain of listTerrain" value="terrain.id">{{terrain.name}}</option>
+    </select>
+</div>

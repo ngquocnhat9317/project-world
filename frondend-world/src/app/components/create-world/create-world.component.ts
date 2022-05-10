@@ -26,8 +26,12 @@ export class CreateWorldComponent implements OnInit {
     }
 
     draw(x: number, y: number): void {
-        for (let i=0; i<this.map.length; i++) {
-            for (let j=0; j<this.map[i].length; j++) {
+        let min_y = (y > this.brush ? (y - this.brush) : 0);
+        let max_y = ((y + this.brush) > this.map.length ? this.map.length: y + this.brush);
+        for (let i = min_y; i < max_y; i++) {
+            let min_x = (x > this.brush ? (x - this.brush) : 0);
+            let max_x = ((x + this.brush) > this.map[i].length ? this.map[i].length: x + this.brush);
+            for (let j = min_x; j < max_x; j++) {
                 if (((i - y)**2 + (j - x)**2) <= this.brush**2) this.map[i][j].terrain = this.terrain;
             }
         }
