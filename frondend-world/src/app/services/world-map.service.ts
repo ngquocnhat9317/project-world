@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { Cell } from 'src/app/interfaces/cell';
+import { TerrainType } from '../interfaces/terrain';
 
 export interface MapData {
     map: Cell[][],
@@ -34,6 +35,34 @@ const getDumpMap = (center: string): MapData => {
     });
 }
 
+const getDumpDefaultMap = (): Cell[][] => {
+    let rows = [];
+    const column = 0;
+    const row = 0;
+    for (let y = (row - 200); y <= (row + 200); y++) {
+        let cells = [];
+        for (let x = (column - 200); x <= (column + 200); x++) {
+            cells.push({
+                'local': `${x}/${y}`,
+                'status': '1',
+                'terrain': 1
+            })
+        }
+        rows.push(cells);
+    }
+    return rows;
+}
+
+const getTerrainType = (): TerrainType[] => {
+    let listTerrain = [
+        {id: 1, name: 'Forest'},
+        {id: 2, name: 'Sea'},
+        {id: 3, name: 'Mountain'},
+        {id: 4, name: 'Desert'}
+    ];
+    return listTerrain;
+}
+
 const getDumpWorldId = (): string => {
     let result = '';
     const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
@@ -57,8 +86,18 @@ export class WorldMapService {
         return cells;
     }
 
+    getDefaultMap(): Observable<Cell[][]> {
+        const cells = of(getDumpDefaultMap());
+        return cells;
+    }
+
     getWorld(): Observable<string> {
         const world = of(getDumpWorldId());
         return world;
+    }
+
+    getTerrainType(): Observable<TerrainType[]> {
+        const type = of(getTerrainType());
+        return type;
     }
 }

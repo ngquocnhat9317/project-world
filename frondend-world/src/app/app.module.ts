@@ -9,6 +9,8 @@ import { WorldMapComponent } from './components/world-map/world-map.component';
 import { WorldCellComponent } from './components/world-cell/world-cell.component';
 import { WorldListComponent } from './components/world-list/world-list.component';
 import { TabListComponent } from './components/tab-list/tab-list.component';
+import { CreateWorldComponent } from './components/create-world/create-world.component';
+import { ModalComponent } from './components/common/modal/modal.component';
 
 @NgModule({
     declarations: [
@@ -18,7 +20,9 @@ import { TabListComponent } from './components/tab-list/tab-list.component';
         WorldMapComponent,
         WorldCellComponent,
         WorldListComponent,
-        TabListComponent
+        TabListComponent,
+        CreateWorldComponent,
+        ModalComponent
     ],
     imports: [
         BrowserModule,
